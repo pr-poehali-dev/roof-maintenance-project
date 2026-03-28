@@ -320,15 +320,10 @@ export default function PageSections({ scrollTo, children }: PageSectionsProps) 
     if (!name.trim() || !phone.trim()) return;
     setStatus("sending");
     try {
-      await fetch(`https://formsubmit.co/ajax/ruslan399885@gmail.com`, {
+      await fetch(`https://functions.poehali.dev/60b4e11b-b8de-4d15-96c9-24ddfc7e8bb5`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          name,
-          phone,
-          message,
-          _subject: "Новая заявка с сайта Krishidzen",
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, phone, message }),
       });
       setStatus("sent");
       setName("");
