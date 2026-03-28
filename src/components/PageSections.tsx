@@ -95,7 +95,7 @@ export default function PageSections({ scrollTo, children }: PageSectionsProps) 
           name,
           phone,
           message,
-          _subject: "Новая заявка с сайта КровМастер",
+          _subject: "Новая заявка с сайта Krishidzen",
         }),
       });
       setStatus("sent");
@@ -169,7 +169,7 @@ export default function PageSections({ scrollTo, children }: PageSectionsProps) 
                 <span className="text-orange">кровельного опыта</span>
               </h2>
               <p className="font-golos text-white/55 text-base leading-relaxed mb-6">
-                КровМастер — команда сертифицированных кровельщиков с опытом работы на объектах любой сложности: от частных домов до промышленных зданий площадью более 10 000 м².
+                Krishidzen — команда сертифицированных кровельщиков с опытом работы на объектах любой сложности: от частных домов до промышленных зданий площадью более 10 000 м².
               </p>
               <p className="font-golos text-white/55 text-base leading-relaxed mb-8">
                 Мы используем только проверенные материалы от ведущих производителей и соблюдаем технологию монтажа на каждом этапе. Гарантия на все виды работ — до 10 лет.
@@ -371,7 +371,7 @@ export default function PageSections({ scrollTo, children }: PageSectionsProps) 
               <Icon name="Home" size={15} className="text-white" />
             </div>
             <span className="font-oswald text-lg font-bold text-white tracking-widest uppercase">
-              Кров<span className="text-orange">Мастер</span>
+              Krishidzen
             </span>
           </div>
           <div className="flex flex-wrap justify-center gap-4 md:gap-6">
@@ -386,7 +386,7 @@ export default function PageSections({ scrollTo, children }: PageSectionsProps) 
             ))}
           </div>
           <div className="font-golos text-white/25 text-sm">
-            © 2026 КровМастер
+            © 2026 Krishidzen
           </div>
         </div>
       </footer>

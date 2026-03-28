@@ -30,7 +30,7 @@ export default function Navbar({ activeSection, mobileOpen, setMobileOpen, scrol
             <Icon name="Home" size={18} className="text-white" />
           </div>
           <span className="font-oswald text-xl font-bold text-white tracking-widest uppercase">
-            Кров<span className="text-orange">Мастер</span>
+            Krishidzen
           </span>
         </div>
 
