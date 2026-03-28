@@ -394,13 +394,18 @@ export default function PageSections({ scrollTo, children }: PageSectionsProps) 
           {/* QR канал */}
           <div className="border-t border-white/5 pt-8 flex flex-col items-center gap-3">
             <p className="font-golos text-white/40 text-xs uppercase tracking-widest">Наш канал</p>
-            <div className="bg-white rounded-2xl p-3 shadow-lg">
+            <a
+              href="https://max.ru/join/ntdXg7t0QJLNlMjZz0vaeLeQio8hIF9Eesv-fcd_LOY"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-2xl p-3 shadow-lg hover:shadow-orange/20 hover:scale-105 transition-all duration-300 block"
+            >
               <img
                 src="https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/bucket/9750cc6a-6be4-491b-8fd9-04e081224bb9.jpg"
                 alt="QR-код канала ДомДзен"
                 className="w-36 h-36 object-contain rounded-xl"
               />
-            </div>
+            </a>
             <p className="font-golos text-white/50 text-sm text-center">
               🏠 «ДомДзен — Строим с душой»<br />
               <span className="text-white/30 text-xs">приватный канал</span>
