@@ -88,7 +88,7 @@ export default function PageSections({ scrollTo, children }: PageSectionsProps) 
     if (!name.trim() || !phone.trim()) return;
     setStatus("sending");
     try {
-      await fetch(`https://formsubmit.co/ajax/ruslan399885@gmail.com`, {
+      await fetch(`https://formsubmit.co/ajax/pruddzen@gmail.com`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
@@ -339,9 +339,9 @@ export default function PageSections({ scrollTo, children }: PageSectionsProps) 
 
             <div className="space-y-4 flex flex-col justify-between">
               {[
-                { icon: "Phone", title: "Телефон", value: "8 800 123-45-67", sub: "Бесплатный звонок по России" },
-                { icon: "Mail", title: "Email", value: "info@krovmaster.ru", sub: "Ответим в течение 1 часа" },
-                { icon: "MapPin", title: "Офис", value: "Москва, ул. Строительная, 12", sub: "Пн–Пт: 9:00–18:00" },
+                { icon: "Phone", title: "Телефон", value: "+7 905 710 88 90", sub: "Звонок и WhatsApp" },
+                { icon: "Mail", title: "Email", value: "pruddzen@gmail.com", sub: "Ответим в течение 1 часа" },
+                { icon: "MapPin", title: "Офис", value: "Кубинка, Наро-Фоминское шоссе 4", sub: "Пн–Пт: 9:00–18:00" },
                 { icon: "Clock", title: "Аварийный выезд", value: "24 часа в сутки", sub: "365 дней в году" },
               ].map((item) => (
                 <div

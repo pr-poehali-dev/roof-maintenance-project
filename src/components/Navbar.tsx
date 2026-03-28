@@ -51,8 +51,8 @@ export default function Navbar({ activeSection, mobileOpen, setMobileOpen, scrol
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          <a href="tel:+78001234567" className="font-oswald text-orange font-semibold tracking-wide text-sm hover:text-orange-light transition-colors">
-            8 800 123-45-67
+          <a href="tel:+79057108890" className="font-oswald text-orange font-semibold tracking-wide text-sm hover:text-orange-light transition-colors">
+            +7 905 710 88 90
           </a>
           <button
             onClick={() => scrollTo("contacts")}
@@ -82,8 +82,8 @@ export default function Navbar({ activeSection, mobileOpen, setMobileOpen, scrol
             </button>
           ))}
           <div className="px-6 py-4">
-            <a href="tel:+78001234567" className="font-oswald text-orange font-semibold tracking-wide">
-              8 800 123-45-67
+            <a href="tel:+79057108890" className="font-oswald text-orange font-semibold tracking-wide">
+              +7 905 710 88 90
             </a>
           </div>
         </div>
