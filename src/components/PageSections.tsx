@@ -374,6 +374,19 @@ export default function PageSections({ scrollTo, children }: PageSectionsProps) 
               <span className="font-oswald text-lg font-bold text-white tracking-widest uppercase">
                 Krishidzen
               </span>
+              <a
+                href="https://max.ru/join/ntdXg7t0QJLNlMjZz0vaeLeQio8hIF9Eesv-fcd_LOY"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white rounded-sm p-0.5 hover:scale-110 transition-all duration-300 block"
+                title="ДомДзен — Строим с душой"
+              >
+                <img
+                  src="https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/bucket/f7fdbd70-af21-427e-b40a-9749d87d7a53.jpg"
+                  alt="QR-код канала ДомДзен"
+                  className="w-8 h-8 object-contain"
+                />
+              </a>
             </div>
             <div className="flex flex-wrap justify-center gap-4 md:gap-6">
               {navItems.map((item) => (
@@ -391,26 +404,6 @@ export default function PageSections({ scrollTo, children }: PageSectionsProps) 
             </div>
           </div>
 
-          {/* QR канал */}
-          <div className="border-t border-white/5 pt-8 flex flex-col items-center gap-3">
-            <p className="font-golos text-white/40 text-xs uppercase tracking-widest">Наш канал</p>
-            <a
-              href="https://max.ru/join/ntdXg7t0QJLNlMjZz0vaeLeQio8hIF9Eesv-fcd_LOY"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white rounded-2xl p-3 shadow-lg hover:shadow-orange/20 hover:scale-105 transition-all duration-300 block"
-            >
-              <img
-                src="https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/bucket/f7fdbd70-af21-427e-b40a-9749d87d7a53.jpg"
-                alt="QR-код канала ДомДзен"
-                className="w-36 h-36 object-contain rounded-xl"
-              />
-            </a>
-            <p className="font-golos text-white/50 text-sm text-center">
-              🏠 «ДомДзен — Строим с душой»<br />
-              <span className="text-white/30 text-xs">приватный канал</span>
-            </p>
-          </div>
         </div>
       </footer>
     </>
