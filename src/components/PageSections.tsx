@@ -320,7 +320,7 @@ export default function PageSections({ scrollTo, children }: PageSectionsProps) 
     if (!name.trim() || !phone.trim()) return;
     setStatus("sending");
     try {
-      await fetch(`https://formsubmit.co/ajax/pruddzen@gmail.com`, {
+      await fetch(`https://formsubmit.co/ajax/ruslan399885@gmail.com`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
