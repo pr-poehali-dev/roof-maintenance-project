@@ -25,7 +25,7 @@ interface CalculatorProps {
 }
 
 const VENT_PRICE = 1500;
-const NET_PRICE = 1500;
+const NET_PRICE = 300;
 
 export default function Calculator({ scrollTo }: CalculatorProps) {
   const [area, setArea] = useState(80);
