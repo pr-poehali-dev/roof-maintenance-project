@@ -1,6 +1,6 @@
 import Icon from "@/components/ui/icon";
 
-type Section = "home" | "services" | "about" | "calculator" | "blog" | "contacts";
+type Section = "home" | "services" | "about" | "calculator" | "blog" | "portfolio" | "contacts";
 
 interface NavbarProps {
   activeSection: Section;
@@ -15,6 +15,7 @@ const navItems: { id: Section; label: string }[] = [
   { id: "about", label: "О нас" },
   { id: "calculator", label: "Калькулятор" },
   { id: "blog", label: "Блог" },
+  { id: "portfolio", label: "Портфолио" },
   { id: "contacts", label: "Контакты" },
 ];
 

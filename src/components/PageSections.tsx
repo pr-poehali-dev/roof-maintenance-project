@@ -4,6 +4,7 @@ import { navItems } from "@/components/Navbar";
 import type { Section } from "@/components/Navbar";
 import ArticleModal from "@/components/ArticleModal";
 import type { Article } from "@/components/ArticleModal";
+import ProblemPortfolio from "@/components/ProblemPortfolio";
 
 const SERVICES = [
   {
@@ -481,6 +482,9 @@ export default function PageSections({ scrollTo, children }: PageSectionsProps) 
           </div>
         </div>
       </section>
+
+      {/* PROBLEM PORTFOLIO */}
+      <ProblemPortfolio scrollTo={scrollTo} />
 
       {/* CONTACTS */}
       <section id="contacts" className="py-24 bg-coal relative overflow-hidden">
