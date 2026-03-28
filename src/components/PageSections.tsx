@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
 import { navItems } from "@/components/Navbar";
 import type { Section } from "@/components/Navbar";
@@ -320,14 +320,19 @@ const STATS = [
 interface PageSectionsProps {
   scrollTo: (id: Section) => void;
   children?: React.ReactNode;
+  calcMessage?: string;
 }
 
-export default function PageSections({ scrollTo, children }: PageSectionsProps) {
+export default function PageSections({ scrollTo, children, calcMessage = "" }: PageSectionsProps) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(calcMessage);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [activeArticle, setActiveArticle] = useState<Article | null>(null);
+
+  useEffect(() => {
+    if (calcMessage) setMessage(calcMessage);
+  }, [calcMessage]);
 
   const handleSubmit = async () => {
     if (!name.trim() || !phone.trim()) return;

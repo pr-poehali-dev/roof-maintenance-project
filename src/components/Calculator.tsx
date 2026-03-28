@@ -25,6 +25,7 @@ const WORK_TYPES = [
 
 interface CalculatorProps {
   scrollTo: (id: Section) => void;
+  onResult: (message: string) => void;
 }
 
 const VENT_PRICE = 1500;
@@ -33,7 +34,7 @@ const SNOW_PRICE = 800;
 const SOFFIT_PRICE = 3200;
 const DRAIN_PRICE = 800;
 
-export default function Calculator({ scrollTo }: CalculatorProps) {
+export default function Calculator({ scrollTo, onResult }: CalculatorProps) {
   const [area, setArea] = useState(80);
   const [qty, setQty] = useState(5);
   const [roofType, setRoofType] = useState("metal");
@@ -64,6 +65,20 @@ export default function Calculator({ scrollTo }: CalculatorProps) {
       result = Math.round(area * rt.price * wt.coeff);
     }
     setCalcResult(result);
+    const workLabel = WORK_TYPES.find((w) => w.id === workType)?.label ?? workType;
+    const roofLabel = ROOF_TYPES.find((r) => r.id === roofType)?.label;
+    let desc = `Услуга: ${workLabel}. `;
+    if (isVent) {
+      desc += `Количество: ${qty} шт. `;
+    } else {
+      const unit = isSnow || isDrain ? "м.п." : "м²";
+      desc += `Площадь/длина: ${area} ${unit}. `;
+    }
+    if (!isVent && !isNet && !isSnow && !isSoffit && !isDrain) {
+      desc += `Тип кровли: ${roofLabel}. `;
+    }
+    desc += `Предварительная стоимость: ${result.toLocaleString("ru-RU")} ₽.`;
+    onResult(desc);
   };
 
   return (
