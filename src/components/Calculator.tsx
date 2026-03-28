@@ -12,26 +12,37 @@ const ROOF_TYPES = [
 ];
 
 const WORK_TYPES = [
-  { id: "repair", label: "Текущий ремонт", coeff: 1.0 },
-  { id: "overhaul", label: "Капитальный ремонт", coeff: 1.6 },
-  { id: "new", label: "Новая кровля", coeff: 1.3 },
-  { id: "service", label: "Обслуживание", coeff: 0.5 },
+  { id: "repair", label: "Текущий ремонт", coeff: 1.0, unit: "м²" },
+  { id: "overhaul", label: "Капитальный ремонт", coeff: 1.6, unit: "м²" },
+  { id: "new", label: "Новая кровля", coeff: 1.3, unit: "м²" },
+  { id: "service", label: "Обслуживание", coeff: 0.5, unit: "м²" },
+  { id: "vent", label: "Вентиляция кровли", coeff: 1, unit: "шт." },
 ];
 
 interface CalculatorProps {
   scrollTo: (id: Section) => void;
 }
 
+const VENT_PRICE = 1500;
+
 export default function Calculator({ scrollTo }: CalculatorProps) {
   const [area, setArea] = useState(80);
+  const [qty, setQty] = useState(5);
   const [roofType, setRoofType] = useState("metal");
   const [workType, setWorkType] = useState("repair");
   const [calcResult, setCalcResult] = useState<number | null>(null);
 
+  const isVent = workType === "vent";
+
   const calcPrice = () => {
-    const rt = ROOF_TYPES.find((r) => r.id === roofType)!;
-    const wt = WORK_TYPES.find((w) => w.id === workType)!;
-    const result = Math.round(area * rt.price * wt.coeff);
+    let result: number;
+    if (isVent) {
+      result = qty * VENT_PRICE;
+    } else {
+      const rt = ROOF_TYPES.find((r) => r.id === roofType)!;
+      const wt = WORK_TYPES.find((w) => w.id === workType)!;
+      result = Math.round(area * rt.price * wt.coeff);
+    }
     setCalcResult(result);
   };
 
@@ -56,46 +67,72 @@ export default function Calculator({ scrollTo }: CalculatorProps) {
         <div className="bg-coal border border-white/10 rounded-2xl p-8 md:p-10">
           <div className="grid md:grid-cols-2 gap-10">
             <div className="space-y-8">
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <label className="font-golos text-white/70 text-sm font-medium">Площадь кровли</label>
-                  <div className="flex items-center gap-1">
-                    <span className="font-oswald text-2xl font-bold text-orange">{area}</span>
-                    <span className="font-golos text-white/40 text-sm">м²</span>
+              {isVent ? (
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <label className="font-golos text-white/70 text-sm font-medium">Количество элементов</label>
+                    <div className="flex items-center gap-1">
+                      <span className="font-oswald text-2xl font-bold text-orange">{qty}</span>
+                      <span className="font-golos text-white/40 text-sm">шт.</span>
+                    </div>
+                  </div>
+                  <input
+                    type="range"
+                    min={1}
+                    max={50}
+                    value={qty}
+                    onChange={(e) => { setQty(Number(e.target.value)); setCalcResult(null); }}
+                    className="w-full"
+                  />
+                  <div className="flex justify-between mt-1">
+                    <span className="font-golos text-white/25 text-xs">1 шт.</span>
+                    <span className="font-golos text-white/25 text-xs">50 шт.</span>
                   </div>
                 </div>
-                <input
-                  type="range"
-                  min={10}
-                  max={500}
-                  value={area}
-                  onChange={(e) => { setArea(Number(e.target.value)); setCalcResult(null); }}
-                  className="w-full"
-                />
-                <div className="flex justify-between mt-1">
-                  <span className="font-golos text-white/25 text-xs">10 м²</span>
-                  <span className="font-golos text-white/25 text-xs">500 м²</span>
+              ) : (
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <label className="font-golos text-white/70 text-sm font-medium">Площадь кровли</label>
+                    <div className="flex items-center gap-1">
+                      <span className="font-oswald text-2xl font-bold text-orange">{area}</span>
+                      <span className="font-golos text-white/40 text-sm">м²</span>
+                    </div>
+                  </div>
+                  <input
+                    type="range"
+                    min={10}
+                    max={500}
+                    value={area}
+                    onChange={(e) => { setArea(Number(e.target.value)); setCalcResult(null); }}
+                    className="w-full"
+                  />
+                  <div className="flex justify-between mt-1">
+                    <span className="font-golos text-white/25 text-xs">10 м²</span>
+                    <span className="font-golos text-white/25 text-xs">500 м²</span>
+                  </div>
                 </div>
-              </div>
+              )}
 
-              <div>
-                <label className="font-golos text-white/70 text-sm font-medium block mb-3">Тип кровли</label>
-                <div className="grid grid-cols-2 gap-2">
-                  {ROOF_TYPES.map((rt) => (
-                    <button
-                      key={rt.id}
-                      onClick={() => { setRoofType(rt.id); setCalcResult(null); }}
-                      className={`px-3 py-2.5 rounded-lg text-xs font-golos font-medium text-left transition-all border ${
-                        roofType === rt.id
-                          ? "bg-orange/20 border-orange text-orange"
-                          : "bg-coal-light border-white/10 text-white/50 hover:border-white/25 hover:text-white/80"
-                      }`}
-                    >
-                      {rt.label}
-                    </button>
-                  ))}
+              {!isVent && (
+                <div>
+                  <label className="font-golos text-white/70 text-sm font-medium block mb-3">Тип кровли</label>
+                  <div className="grid grid-cols-2 gap-2">
+                    {ROOF_TYPES.map((rt) => (
+                      <button
+                        key={rt.id}
+                        onClick={() => { setRoofType(rt.id); setCalcResult(null); }}
+                        className={`px-3 py-2.5 rounded-lg text-xs font-golos font-medium text-left transition-all border ${
+                          roofType === rt.id
+                            ? "bg-orange/20 border-orange text-orange"
+                            : "bg-coal-light border-white/10 text-white/50 hover:border-white/25 hover:text-white/80"
+                        }`}
+                      >
+                        {rt.label}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               <div>
                 <label className="font-golos text-white/70 text-sm font-medium block mb-3">Вид работ</label>
@@ -143,7 +180,9 @@ export default function Calculator({ scrollTo }: CalculatorProps) {
                       {calcResult.toLocaleString("ru-RU")} ₽
                     </div>
                     <div className="font-golos text-white/30 text-xs mb-6">
-                      {ROOF_TYPES.find(r => r.id === roofType)?.label} · {area} м² · {WORK_TYPES.find(w => w.id === workType)?.label}
+                      {isVent
+                        ? `Вентиляция кровли · ${qty} шт.`
+                        : `${ROOF_TYPES.find(r => r.id === roofType)?.label} · ${area} м² · ${WORK_TYPES.find(w => w.id === workType)?.label}`}
                     </div>
                     <div className="text-xs text-white/30 font-golos">
                       * Точная стоимость определяется после выезда специалиста
