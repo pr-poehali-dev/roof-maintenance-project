@@ -17,6 +17,7 @@ const WORK_TYPES = [
   { id: "new", label: "Новая кровля", coeff: 1.3, unit: "м²" },
   { id: "service", label: "Обслуживание", coeff: 0.5, unit: "м²" },
   { id: "vent", label: "Вентиляция кровли", coeff: 1, unit: "шт." },
+  { id: "net", label: "Защита сеткой", coeff: 1, unit: "м²" },
 ];
 
 interface CalculatorProps {
@@ -24,6 +25,7 @@ interface CalculatorProps {
 }
 
 const VENT_PRICE = 1500;
+const NET_PRICE = 1500;
 
 export default function Calculator({ scrollTo }: CalculatorProps) {
   const [area, setArea] = useState(80);
@@ -33,11 +35,14 @@ export default function Calculator({ scrollTo }: CalculatorProps) {
   const [calcResult, setCalcResult] = useState<number | null>(null);
 
   const isVent = workType === "vent";
+  const isNet = workType === "net";
 
   const calcPrice = () => {
     let result: number;
     if (isVent) {
       result = qty * VENT_PRICE;
+    } else if (isNet) {
+      result = area * NET_PRICE;
     } else {
       const rt = ROOF_TYPES.find((r) => r.id === roofType)!;
       const wt = WORK_TYPES.find((w) => w.id === workType)!;
@@ -113,7 +118,7 @@ export default function Calculator({ scrollTo }: CalculatorProps) {
                 </div>
               )}
 
-              {!isVent && (
+              {!isVent && !isNet && (
                 <div>
                   <label className="font-golos text-white/70 text-sm font-medium block mb-3">Тип кровли</label>
                   <div className="grid grid-cols-2 gap-2">
@@ -182,6 +187,8 @@ export default function Calculator({ scrollTo }: CalculatorProps) {
                     <div className="font-golos text-white/30 text-xs mb-6">
                       {isVent
                         ? `Вентиляция кровли · ${qty} шт.`
+                        : isNet
+                        ? `Защита сеткой · ${area} м²`
                         : `${ROOF_TYPES.find(r => r.id === roofType)?.label} · ${area} м² · ${WORK_TYPES.find(w => w.id === workType)?.label}`}
                     </div>
                     <div className="text-xs text-white/30 font-golos">
