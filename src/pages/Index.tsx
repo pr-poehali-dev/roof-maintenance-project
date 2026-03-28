@@ -8,6 +8,7 @@ export default function Index() {
   const [activeSection, setActiveSection] = useState<Section>("home");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [calcMessage, setCalcMessage] = useState("");
+  const [selectedWorkType, setSelectedWorkType] = useState("");
 
   const scrollTo = (id: Section) => {
     setActiveSection(id);
@@ -25,8 +26,8 @@ export default function Index() {
         scrollTo={scrollTo}
       />
       <HeroSection scrollTo={scrollTo} />
-      <PageSections scrollTo={scrollTo} calcMessage={calcMessage}>
-        <Calculator scrollTo={scrollTo} onResult={setCalcMessage} />
+      <PageSections scrollTo={scrollTo} calcMessage={calcMessage} onServiceSelect={setSelectedWorkType}>
+        <Calculator scrollTo={scrollTo} onResult={setCalcMessage} selectedWorkType={selectedWorkType} />
       </PageSections>
     </div>
   );

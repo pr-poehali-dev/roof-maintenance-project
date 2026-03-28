@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
 import type { Section } from "@/components/Navbar";
 
@@ -26,6 +26,7 @@ const WORK_TYPES = [
 interface CalculatorProps {
   scrollTo: (id: Section) => void;
   onResult: (message: string) => void;
+  selectedWorkType?: string;
 }
 
 const VENT_PRICE = 1500;
@@ -34,12 +35,19 @@ const SNOW_PRICE = 800;
 const SOFFIT_PRICE = 3200;
 const DRAIN_PRICE = 800;
 
-export default function Calculator({ scrollTo, onResult }: CalculatorProps) {
+export default function Calculator({ scrollTo, onResult, selectedWorkType }: CalculatorProps) {
   const [area, setArea] = useState(80);
   const [qty, setQty] = useState(5);
   const [roofType, setRoofType] = useState("metal");
   const [workType, setWorkType] = useState("repair");
   const [calcResult, setCalcResult] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (selectedWorkType) {
+      setWorkType(selectedWorkType);
+      setCalcResult(null);
+    }
+  }, [selectedWorkType]);
 
   const isVent = workType === "vent";
   const isNet = workType === "net";
