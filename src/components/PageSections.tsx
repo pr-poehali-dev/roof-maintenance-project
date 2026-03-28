@@ -401,7 +401,7 @@ export default function PageSections({ scrollTo, children }: PageSectionsProps) 
               className="bg-white rounded-2xl p-3 shadow-lg hover:shadow-orange/20 hover:scale-105 transition-all duration-300 block"
             >
               <img
-                src="https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/bucket/9750cc6a-6be4-491b-8fd9-04e081224bb9.jpg"
+                src="https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/bucket/f7fdbd70-af21-427e-b40a-9749d87d7a53.jpg"
                 alt="QR-код канала ДомДзен"
                 className="w-36 h-36 object-contain rounded-xl"
               />
