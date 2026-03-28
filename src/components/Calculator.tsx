@@ -18,6 +18,7 @@ const WORK_TYPES = [
   { id: "service", label: "Обслуживание", coeff: 0.5, unit: "м²" },
   { id: "vent", label: "Вентиляция кровли", coeff: 1, unit: "шт." },
   { id: "net", label: "Защита сеткой", coeff: 1, unit: "м²" },
+  { id: "snow", label: "Снегозадержание", coeff: 1, unit: "м.п." },
 ];
 
 interface CalculatorProps {
@@ -26,6 +27,7 @@ interface CalculatorProps {
 
 const VENT_PRICE = 1500;
 const NET_PRICE = 300;
+const SNOW_PRICE = 800;
 
 export default function Calculator({ scrollTo }: CalculatorProps) {
   const [area, setArea] = useState(80);
@@ -36,6 +38,7 @@ export default function Calculator({ scrollTo }: CalculatorProps) {
 
   const isVent = workType === "vent";
   const isNet = workType === "net";
+  const isSnow = workType === "snow";
 
   const calcPrice = () => {
     let result: number;
@@ -43,6 +46,8 @@ export default function Calculator({ scrollTo }: CalculatorProps) {
       result = qty * VENT_PRICE;
     } else if (isNet) {
       result = area * NET_PRICE;
+    } else if (isSnow) {
+      result = area * SNOW_PRICE;
     } else {
       const rt = ROOF_TYPES.find((r) => r.id === roofType)!;
       const wt = WORK_TYPES.find((w) => w.id === workType)!;
@@ -97,28 +102,30 @@ export default function Calculator({ scrollTo }: CalculatorProps) {
               ) : (
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <label className="font-golos text-white/70 text-sm font-medium">Площадь кровли</label>
+                    <label className="font-golos text-white/70 text-sm font-medium">
+                      {isSnow ? "Длина" : "Площадь кровли"}
+                    </label>
                     <div className="flex items-center gap-1">
                       <span className="font-oswald text-2xl font-bold text-orange">{area}</span>
-                      <span className="font-golos text-white/40 text-sm">м²</span>
+                      <span className="font-golos text-white/40 text-sm">{isSnow ? "м.п." : "м²"}</span>
                     </div>
                   </div>
                   <input
                     type="range"
-                    min={10}
-                    max={500}
+                    min={isSnow ? 1 : 10}
+                    max={isSnow ? 100 : 500}
                     value={area}
                     onChange={(e) => { setArea(Number(e.target.value)); setCalcResult(null); }}
                     className="w-full"
                   />
                   <div className="flex justify-between mt-1">
-                    <span className="font-golos text-white/25 text-xs">10 м²</span>
-                    <span className="font-golos text-white/25 text-xs">500 м²</span>
+                    <span className="font-golos text-white/25 text-xs">{isSnow ? "1 м.п." : "10 м²"}</span>
+                    <span className="font-golos text-white/25 text-xs">{isSnow ? "100 м.п." : "500 м²"}</span>
                   </div>
                 </div>
               )}
 
-              {!isVent && !isNet && (
+              {!isVent && !isNet && !isSnow && (
                 <div>
                   <label className="font-golos text-white/70 text-sm font-medium block mb-3">Тип кровли</label>
                   <div className="grid grid-cols-2 gap-2">
@@ -189,6 +196,8 @@ export default function Calculator({ scrollTo }: CalculatorProps) {
                         ? `Вентиляция кровли · ${qty} шт.`
                         : isNet
                         ? `Защита сеткой · ${area} м²`
+                        : isSnow
+                        ? `Снегозадержание · ${area} м.п.`
                         : `${ROOF_TYPES.find(r => r.id === roofType)?.label} · ${area} м² · ${WORK_TYPES.find(w => w.id === workType)?.label}`}
                     </div>
                     <div className="text-xs text-white/30 font-golos">
