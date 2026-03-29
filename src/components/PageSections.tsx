@@ -782,7 +782,10 @@ export default function PageSections({ scrollTo, children, calcMessage = "", onS
                     {status === "sending" ? "Отправляем..." : "Отправить заявку"}
                   </button>
                   <p className="font-golos text-white/25 text-xs text-center">
-                    Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+                    Нажимая кнопку, вы соглашаетесь с{" "}
+                    <Link to="/privacy" className="underline hover:text-orange transition-colors">
+                      политикой конфиденциальности
+                    </Link>
                   </p>
                 </div>
               )}
