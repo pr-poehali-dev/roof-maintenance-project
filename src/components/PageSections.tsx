@@ -820,8 +820,9 @@ export default function PageSections({ scrollTo, children, calcMessage = "", onS
       {/* FOOTER */}
       <footer className="bg-coal-light border-t border-white/5 py-10">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
-            <div className="flex items-center gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+            {/* Лого */}
+            <div className="flex items-center gap-3 justify-center md:justify-start">
               <div className="w-8 h-8 bg-orange rounded-sm flex items-center justify-center">
                 <Icon name="Home" size={15} className="text-white" />
               </div>
@@ -842,7 +843,8 @@ export default function PageSections({ scrollTo, children, calcMessage = "", onS
                 />
               </a>
             </div>
-            <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+            {/* Навигация */}
+            <div className="flex flex-wrap justify-center gap-4">
               {navItems.map((item) => (
                 <button
                   key={item.id}
@@ -853,7 +855,8 @@ export default function PageSections({ scrollTo, children, calcMessage = "", onS
                 </button>
               ))}
             </div>
-            <div className="flex flex-col items-end gap-1">
+            {/* Копирайт */}
+            <div className="flex flex-col items-center md:items-end gap-1">
               <div className="font-golos text-white/25 text-sm">
                 © 2026 Krishidzen
               </div>
