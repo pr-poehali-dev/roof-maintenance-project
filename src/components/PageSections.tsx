@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { navItems } from "@/components/Navbar";
 import type { Section } from "@/components/Navbar";
@@ -849,8 +850,16 @@ export default function PageSections({ scrollTo, children, calcMessage = "", onS
                 </button>
               ))}
             </div>
-            <div className="font-golos text-white/25 text-sm">
-              © 2026 Krishidzen
+            <div className="flex flex-col items-end gap-1">
+              <div className="font-golos text-white/25 text-sm">
+                © 2026 Krishidzen
+              </div>
+              <Link
+                to="/privacy"
+                className="font-golos text-white/30 text-xs hover:text-orange transition-colors"
+              >
+                Политика конфиденциальности
+              </Link>
             </div>
           </div>
 
