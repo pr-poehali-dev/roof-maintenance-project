@@ -797,6 +797,7 @@ export default function PageSections({ scrollTo, children, calcMessage = "", onS
                 { icon: "Mail", title: "Email", value: "pruddzen@gmail.com", sub: "Ответим в течение 1 часа" },
                 { icon: "MapPin", title: "Офис", value: "Кубинка, Наро-Фоминское шоссе 4", sub: "Пн–Пт: 9:00–18:00" },
                 { icon: "Clock", title: "Аварийный выезд", value: "24 часа в сутки", sub: "365 дней в году" },
+                { icon: "Building2", title: "ИНН / ОГРН", value: "644117641522", sub: "ОГРН 322508100238472" },
               ].map((item) => (
                 <div
                   key={item.title}
