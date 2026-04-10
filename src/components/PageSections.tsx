@@ -817,6 +817,47 @@ export default function PageSections({ scrollTo, children, calcMessage = "", onS
         </div>
       </section>
 
+      {/* PARTNERS */}
+      <section className="bg-coal py-16">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="text-center mb-10">
+            <span className="font-golos text-orange text-sm uppercase tracking-widest">Сертифицированный монтаж</span>
+            <h2 className="font-oswald text-3xl md:text-4xl font-bold text-white mt-2 uppercase tracking-wide">
+              Наши партнёры
+            </h2>
+            <p className="font-golos text-white/40 mt-3 max-w-xl mx-auto text-sm">
+              Работаем с ведущими производителями кровельных материалов — используем только сертифицированную продукцию
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+            {[
+              { name: "ТехноНИКОЛЬ", img: "https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/files/d2ac72c6-930d-4664-bf33-72f665303c34.jpg" },
+              { name: "Grand Line", img: "https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/files/f6e46904-22f9-4433-9059-e3602d6c86bd.jpg" },
+              { name: "Металл Профиль", img: "https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/files/9af98e5d-5771-4641-8b2a-2df61972bad9.jpg" },
+              { name: "Ондулин", img: "https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/files/e7c9f6df-5a6b-44a2-977a-83604d584bfc.jpg" },
+              { name: "Döcke", img: "https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/files/3b72c9fb-c0a9-4a66-90af-99da40a934a2.jpg" },
+              { name: "Ruukki", img: "https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/files/8160a554-babc-421f-b43d-d39d5f17b99a.jpg" },
+            ].map((partner) => (
+              <div
+                key={partner.name}
+                className="bg-coal-light border border-white/8 rounded-xl p-4 flex flex-col items-center gap-3 hover:border-orange/30 transition-all duration-300 group"
+              >
+                <div className="w-16 h-16 rounded-lg overflow-hidden bg-white/5 flex items-center justify-center">
+                  <img
+                    src={partner.img}
+                    alt={partner.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <span className="font-golos text-white/50 text-xs text-center group-hover:text-white/80 transition-colors">
+                  {partner.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FOOTER */}
       <footer className="bg-coal-light border-t border-white/5 py-10">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
