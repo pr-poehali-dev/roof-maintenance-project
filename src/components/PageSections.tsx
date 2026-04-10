@@ -831,13 +831,13 @@ export default function PageSections({ scrollTo, children, calcMessage = "", onS
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4">
             {[
-              { name: "ТехноНИКОЛЬ", img: "https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/files/d2ac72c6-930d-4664-bf33-72f665303c34.jpg" },
-              { name: "Grand Line", img: "https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/files/f6e46904-22f9-4433-9059-e3602d6c86bd.jpg" },
+              { name: "ТехноНИКОЛЬ", img: "https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/bucket/3f883a94-1e22-42af-bf71-36ed05897321.jpeg" },
+              { name: "Grand Line", img: "https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/bucket/2e432893-256a-4c2c-8d57-fb313b2b4418.jpg" },
               { name: "Металл Профиль", img: "https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/files/9af98e5d-5771-4641-8b2a-2df61972bad9.jpg" },
               { name: "Ондулин", img: "https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/files/e7c9f6df-5a6b-44a2-977a-83604d584bfc.jpg" },
               { name: "Döcke", img: "https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/files/3b72c9fb-c0a9-4a66-90af-99da40a934a2.jpg" },
               { name: "Ruukki", img: "https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/files/8160a554-babc-421f-b43d-d39d5f17b99a.jpg" },
-              { name: "Лемана Про", img: "https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/files/af7ea460-7b4d-411e-ab07-69b9a308eb23.jpg" },
+              { name: "Лемана Про", img: "https://cdn.poehali.dev/projects/ca681d2b-6ac9-4728-b0ae-14b9c3d0515f/bucket/aa00d8cd-3594-4f31-8c99-d639787e0427.png" },
             ].map((partner) => (
               <div
                 key={partner.name}
